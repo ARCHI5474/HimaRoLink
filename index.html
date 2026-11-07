@@ -139,7 +139,28 @@
     {n:'Amazon', u:'https://www.amazon.co.jp/', i:'shopping_cart', category:'買い物', type:'sys'}
   ];
 
-  let bms = JSON.parse(localStorage.getItem('himalo_bm')) || DEFAULT_BM;
+  function loadBookmarks() {
+    const saved = localStorage.getItem('himalo_bm');
+    if (saved === null) return DEFAULT_BM;
+
+    try {
+      const parsed = JSON.parse(saved);
+      if (!Array.isArray(parsed)) throw new TypeError('Saved bookmarks must be an array.');
+
+      const valid = parsed.filter(b =>
+        b && typeof b.n === 'string' && typeof b.u === 'string' && typeof b.category === 'string'
+      );
+      if (valid.length !== parsed.length) {
+        console.warn('Invalid saved bookmarks were ignored.');
+      }
+      return valid;
+    } catch (error) {
+      console.warn('Saved bookmarks could not be loaded; restoring defaults.', error);
+      return DEFAULT_BM;
+    }
+  }
+
+  let bms = loadBookmarks();
 
   function renderBM() {
     const container = document.getElementById('section-bm');
