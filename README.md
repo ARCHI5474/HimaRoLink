@@ -2,7 +2,7 @@
 ブラウザのトップページに指定すると便利なリンク集型ＷＥＢサイトです。（日本人向け）
 Development: Built with AI-assisted coding
 # GitHubで利用する
-ヒマロリンクは2026年4月に閉鎖しました。<br>
+ヒマロリンクは2026年12月に閉鎖しました。<br>
 GitHubPages上で引き続き利用可能です。（今後、機能等が更新されることはありません）<br>
 [🌐 HimaRoLink（ヒマロリンク）を開く](https://archi5474.github.io/HimaRoLink/)
 
